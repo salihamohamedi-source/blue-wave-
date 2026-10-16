@@ -287,6 +287,43 @@ h1 span {
     color: var(--cyan);
 }
 
+.community-presence {
+    margin-top: 22px;
+}
+
+.star-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 13px;
+    border: 1px solid rgba(183, 228, 255, 0.24);
+    border-radius: 999px;
+    color: #d9edff;
+    background: rgba(91, 171, 239, 0.1);
+    cursor: pointer;
+    transition: background 180ms ease, border-color 180ms ease;
+}
+
+.star-button:hover,
+.star-button:focus-visible,
+.star-button[aria-pressed="true"] {
+    border-color: rgba(174, 224, 255, 0.45);
+    color: #fff;
+    background: rgba(130, 202, 255, 0.2);
+    outline: none;
+}
+
+.star-button[aria-pressed="true"] .star-button-icon {
+    color: var(--cyan);
+}
+
+.online-count {
+    margin: 9px 0 0;
+    color: #a8bfdc;
+    font-size: 0.78rem;
+    line-height: 1.5;
+}
+
 .hero-orb {
     position: absolute;
     top: 50%;
@@ -422,6 +459,36 @@ h1 span {
     margin: 14px 0 0;
     color: #a9f2d4;
     font-size: 0.9rem;
+}
+
+.form-message.is-error {
+    color: #ffc1c1;
+}
+
+.video-download-section {
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(213, 237, 255, 0.13);
+}
+
+.video-download-section .eyebrow {
+    margin-bottom: 8px;
+}
+
+.video-download-section .section-copy {
+    margin-bottom: 15px;
+}
+
+.video-download-progress {
+    display: block;
+    width: 100%;
+    height: 8px;
+    margin-top: 15px;
+    accent-color: #83e7ff;
+}
+
+.video-download-progress[hidden] {
+    display: none;
 }
 
 .team-list {
