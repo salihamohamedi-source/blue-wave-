@@ -21,29 +21,31 @@
             <span>bluewave</span>
         </a>
         <nav class="navigation" aria-label="Main navigation">
-            <button class="nav-button" type="button" data-page="team">My team</button>
-            <button class="nav-button" type="button" data-page="social">Social media</button>
-            <button class="nav-button active" type="button" data-page="home" aria-current="page">Home</button>
+            <button class="nav-button" type="button" data-page="team" data-i18n="navTeam">My team</button>
+            <button class="nav-button" type="button" data-page="social" data-i18n="navSocial">Social media</button>
+            <button class="nav-button active" type="button" data-page="home" aria-current="page" data-i18n="navHome">Home</button>
+            <button class="nav-button" type="button" data-page="account" data-account-nav>Account</button>
+            <button class="nav-button language-toggle" id="language-toggle" type="button" aria-label="Switch language to Arabic">العربية</button>
         </nav>
     </header>
 
     <main class="page-wrap">
         <section class="page home-page active" id="home" aria-labelledby="home-title">
             <div class="hero-card">
-                <span class="status-pill"><span class="status-dot"></span> A little space to explore</span>
-                <p class="eyebrow">Welcome to Bluewave</p>
-                <h1 id="home-title">Make a splash.<br><span>Find your flow.</span></h1>
-                <p class="intro">A bright, simple place to share, discover, and connect. Dive in and see where the bubbles take you.</p>
+                <span class="status-pill"><span class="status-dot"></span><span data-i18n="statusText">A little space to explore</span></span>
+                <p class="eyebrow" data-i18n="welcome">Welcome to Bluewave</p>
+                <h1 id="home-title"><span class="heading-first" data-i18n="heroFirst">Make a splash.</span><br><span data-i18n="heroSecond">Find your flow.</span></h1>
+                <p class="intro" data-i18n="intro">A bright, simple place to share, discover, and connect. Dive in and see where the bubbles take you.</p>
                 <button class="primary-button" type="button" data-page="download">
-                    Start exploring <span aria-hidden="true">→</span>
+                    <span data-i18n="startExploring">Start exploring</span> <span aria-hidden="true">→</span>
                 </button>
-                <div class="hero-note"><span aria-hidden="true">✦</span> Good things are just below the surface</div>
+                <div class="hero-note"><span aria-hidden="true">✦</span> <span data-i18n="heroNote">Good things are just below the surface</span></div>
                 <div class="community-presence">
                     <button class="star-button" id="star-button" type="button" aria-pressed="false">
                         <span class="star-button-icon" aria-hidden="true">☆</span>
                         <span class="star-button-label">Star Bluewave</span>
                     </button>
-                    <p id="online-count" class="online-count" aria-live="polite">Live user count is unavailable until a real-time presence service is configured.</p>
+                    <p id="online-count" class="online-count" aria-live="polite" data-i18n="presenceUnavailable">Live user count is unavailable until a real-time presence service is configured.</p>
                 </div>
             </div>
             <div class="hero-orb" aria-hidden="true"><span>✦</span></div>
@@ -53,44 +55,127 @@
         <section class="page content-page" id="download" aria-labelledby="download-title" hidden>
             <div class="content-card">
                 <span class="section-icon" aria-hidden="true">↓</span>
-                <p class="eyebrow">Your own little download</p>
-                <h1 id="download-title">Save a message</h1>
-                <p class="section-copy">Type something below and download it as a text file.</p>
+                <p class="eyebrow" data-i18n="downloadEyebrow">Your own little download</p>
+                <h1 id="download-title" data-i18n="downloadTitle">Save a message</h1>
+                <p class="section-copy" data-i18n="textDownloadDescription">Type something below and download it as a text file.</p>
                 <form id="download-form" class="download-form">
-                    <label class="visually-hidden" for="download-text">Text to download</label>
-                    <input id="download-text" name="download-text" type="text" placeholder="Write something lovely..." autocomplete="off" required>
-                    <button class="primary-button download-button" type="submit">Download <span aria-hidden="true">↓</span></button>
+                    <label class="visually-hidden" for="download-text" data-i18n="textToDownload">Text to download</label>
+                    <input id="download-text" name="download-text" type="text" placeholder="Write something lovely..." data-i18n-placeholder="textPlaceholder" autocomplete="off" required>
+                    <button class="primary-button download-button" type="submit"><span data-i18n="download">Download</span> <span aria-hidden="true">↓</span></button>
                 </form>
                 <p id="download-message" class="form-message" aria-live="polite"></p>
                 <div class="video-download-section">
-                    <p class="eyebrow">Video download</p>
-                    <p class="section-copy">Download a direct MP4 or WebM video link.</p>
+                    <p class="eyebrow" data-i18n="videoEyebrow">Video download</p>
+                    <p class="section-copy" data-i18n="videoDescription">Download a direct MP4 or WebM video link.</p>
                     <form id="video-download-form" class="download-form">
-                        <label class="visually-hidden" for="video-url">Direct video URL</label>
-                        <input id="video-url" name="video-url" type="url" placeholder="Paste a direct MP4 or WebM URL..." autocomplete="url" required>
-                        <button class="primary-button download-button" id="video-download-button" type="submit">Download <span aria-hidden="true">↓</span></button>
+                        <label class="visually-hidden" for="video-url" data-i18n="videoUrlLabel">Direct video URL</label>
+                        <input id="video-url" name="video-url" type="url" dir="ltr" placeholder="Paste a direct MP4 or WebM URL..." data-i18n-placeholder="videoUrlPlaceholder" autocomplete="url" required>
+                        <button class="primary-button download-button" id="video-download-button" type="submit"><span data-i18n="download">Download</span> <span aria-hidden="true">↓</span></button>
                     </form>
-                    <progress id="video-download-progress" class="video-download-progress" max="100" value="0" hidden aria-label="Video download progress"></progress>
+                    <div class="video-preview-actions">
+                        <button class="preview-button" id="preview-button" type="button" data-i18n="preview">Preview video</button>
+                        <label class="download-option">
+                            <span data-i18n="quality">Quality</span>
+                            <select id="video-quality" aria-label="Video quality" data-i18n-aria-label="quality">
+                                <option value="original" data-i18n="originalQuality">Original quality</option>
+                            </select>
+                        </label>
+                    </div>
+                    <video id="video-preview" class="video-preview" controls playsinline preload="none" hidden aria-label="Video preview" data-i18n-aria-label="preview"></video>
+                    <label class="download-option filename-option" for="video-filename">
+                        <span data-i18n="filename">Save as</span>
+                        <input id="video-filename" type="text" maxlength="120" placeholder="Optional filename" data-i18n-placeholder="filenamePlaceholder" autocomplete="off">
+                    </label>
+                    <p id="video-preview-message" class="form-message" aria-live="polite"></p>
+                    <progress id="video-download-progress" class="video-download-progress" max="100" value="0" hidden aria-label="Video download progress" data-i18n-aria-label="downloadProgressLabel"></progress>
                     <p id="video-download-message" class="form-message" aria-live="polite"></p>
+                    <section class="download-history" aria-labelledby="history-title">
+                        <div class="history-heading">
+                            <h2 id="history-title" data-i18n="historyTitle">Download history</h2>
+                            <button class="preview-button clear-history-button" id="clear-history-button" type="button" data-i18n="clearHistory">Clear history</button>
+                        </div>
+                        <p id="download-statistics" class="history-statistics" aria-live="polite"></p>
+                        <ul id="download-history-list" class="history-list"></ul>
+                    </section>
                 </div>
+            </div>
+        </section>
+
+        <section class="page content-page" id="account" aria-labelledby="account-title" hidden>
+            <div class="content-card account-card">
+                <span class="section-icon" aria-hidden="true">◉</span>
+                <p class="eyebrow" data-account-i18n="eyebrow">Your Bluewave space</p>
+                <h1 id="account-title" data-account-i18n="title">Your account</h1>
+                <p class="section-copy account-intro" data-account-i18n="intro">Sign in or create an account to manage your profile.</p>
+
+                <div class="account-guest" id="account-guest" hidden>
+                    <div class="account-tabs" role="group" aria-label="Account actions">
+                        <button class="preview-button" id="account-show-login" type="button" data-account-i18n="loginTab">Log in</button>
+                        <button class="preview-button" id="account-show-signup" type="button" data-account-i18n="signupTab">Create account</button>
+                    </div>
+                    <form class="account-form" id="account-login-form" hidden>
+                        <label class="account-field" for="account-login-email"><span data-account-i18n="email">Email</span><input id="account-login-email" name="email" type="email" maxlength="254" autocomplete="email" required></label>
+                        <label class="account-field" for="account-login-password"><span data-account-i18n="password">Password</span><input id="account-login-password" name="password" type="password" autocomplete="current-password" required></label>
+                        <button class="primary-button account-submit" type="submit" data-account-i18n="login">Log in</button>
+                        <button class="account-text-button" id="account-show-reset-request" type="button" data-account-i18n="forgotPassword">Forgot your password?</button>
+                    </form>
+                    <form class="account-form" id="account-signup-form" hidden>
+                        <label class="account-field" for="account-signup-name"><span data-account-i18n="displayName">Display name</span><input id="account-signup-name" name="displayName" type="text" maxlength="60" autocomplete="name" required></label>
+                        <label class="account-field" for="account-signup-email"><span data-account-i18n="email">Email</span><input id="account-signup-email" name="email" type="email" maxlength="254" autocomplete="email" required></label>
+                        <label class="account-field" for="account-signup-password"><span data-account-i18n="password">Password</span><input id="account-signup-password" name="password" type="password" minlength="12" maxlength="72" autocomplete="new-password" required></label>
+                        <p class="account-hint" data-account-i18n="passwordHint">Use at least 12 characters (maximum 72 UTF-8 bytes).</p>
+                        <button class="primary-button account-submit" type="submit" data-account-i18n="signup">Create account</button>
+                    </form>
+                    <form class="account-form" id="account-reset-request-form" hidden>
+                        <p class="account-hint" data-account-i18n="resetRequestCopy">Enter your email and, if an account exists, we’ll send a secure password reset link.</p>
+                        <label class="account-field" for="account-reset-email"><span data-account-i18n="email">Email</span><input id="account-reset-email" name="email" type="email" maxlength="254" autocomplete="email" required></label>
+                        <button class="primary-button account-submit" type="submit" data-account-i18n="sendReset">Send reset link</button>
+                        <button class="account-text-button" id="account-reset-back" type="button" data-account-i18n="backToLogin">Back to log in</button>
+                    </form>
+                    <form class="account-form" id="account-reset-form" hidden>
+                        <p class="account-hint" data-account-i18n="resetCopy">Choose a new password for your account.</p>
+                        <label class="account-field" for="account-new-password"><span data-account-i18n="newPassword">New password</span><input id="account-new-password" name="password" type="password" minlength="12" maxlength="72" autocomplete="new-password" required></label>
+                        <p class="account-hint" data-account-i18n="passwordHint">Use at least 12 characters (maximum 72 UTF-8 bytes).</p>
+                        <button class="primary-button account-submit" type="submit" data-account-i18n="resetPassword">Reset password</button>
+                        <button class="account-text-button" id="account-reset-cancel" type="button" data-account-i18n="backToLogin">Back to log in</button>
+                    </form>
+                </div>
+
+                <div class="account-profile" id="account-profile" hidden>
+                    <p class="account-greeting" id="account-greeting"></p>
+                    <form class="account-form" id="account-profile-form">
+                        <label class="account-field" for="account-profile-name"><span data-account-i18n="displayName">Display name</span><input id="account-profile-name" name="displayName" type="text" maxlength="60" autocomplete="name" required></label>
+                        <label class="account-field" for="account-profile-email"><span data-account-i18n="email">Email</span><input id="account-profile-email" type="email" readonly aria-readonly="true"></label>
+                        <button class="primary-button account-submit" type="submit" data-account-i18n="saveProfile">Save profile</button>
+                    </form>
+                    <form class="account-form account-password-form" id="account-password-form">
+                        <p class="account-subtitle" data-account-i18n="changePassword">Change password</p>
+                        <label class="account-field" for="account-current-password"><span data-account-i18n="currentPassword">Current password</span><input id="account-current-password" name="currentPassword" type="password" autocomplete="current-password" required></label>
+                        <label class="account-field" for="account-profile-new-password"><span data-account-i18n="newPassword">New password</span><input id="account-profile-new-password" name="newPassword" type="password" minlength="12" maxlength="72" autocomplete="new-password" required></label>
+                        <p class="account-hint" data-account-i18n="passwordHint">Use at least 12 characters (maximum 72 UTF-8 bytes).</p>
+                        <button class="primary-button account-submit" type="submit" data-account-i18n="updatePassword">Update password</button>
+                    </form>
+                    <button class="preview-button account-logout" id="account-logout" type="button" data-account-i18n="logout">Log out</button>
+                </div>
+                <p class="account-status" id="account-status" role="status" aria-live="polite"></p>
             </div>
         </section>
 
         <section class="page content-page" id="team" aria-labelledby="team-title" hidden>
             <div class="content-card">
                 <span class="section-icon" aria-hidden="true">✦</span>
-                <p class="eyebrow">The people behind it</p>
-                <h1 id="team-title">Meet my team</h1>
-                <p class="section-copy">A small team with big ideas and a shared love of making things.</p>
+                <p class="eyebrow" data-i18n="teamEyebrow">The people behind it</p>
+                <h1 id="team-title" data-i18n="teamTitle">Meet my team</h1>
+                <p class="section-copy" data-i18n="teamDescription">A small team with big ideas and a shared love of making things.</p>
                 <div class="team-list">
                     <article class="person-card">
                         <span class="avatar avatar-one" aria-hidden="true">A</span>
-                        <div><span class="person-label">Team member</span><h2>Ahmed Nouh</h2></div>
+                        <div><span class="person-label" data-i18n="teamMember">Team member</span><h2>Ahmed Nouh</h2></div>
                         <span class="person-sparkle" aria-hidden="true">✧</span>
                     </article>
                     <article class="person-card">
                         <span class="avatar avatar-two" aria-hidden="true">A</span>
-                        <div><span class="person-label">Team member</span><h2>Aseel</h2></div>
+                        <div><span class="person-label" data-i18n="teamMember">Team member</span><h2>Aseel</h2></div>
                         <span class="person-sparkle" aria-hidden="true">✧</span>
                     </article>
                 </div>
@@ -100,19 +185,20 @@
         <section class="page content-page" id="social" aria-labelledby="social-title" hidden>
             <div class="content-card">
                 <span class="section-icon instagram-icon" aria-hidden="true">◎</span>
-                <p class="eyebrow">Find us out there</p>
-                <h1 id="social-title">Let’s be social</h1>
-                <p class="section-copy">Follow along for updates, ideas, and more.</p>
+                <p class="eyebrow" data-i18n="socialEyebrow">Find us out there</p>
+                <h1 id="social-title" data-i18n="socialTitle">Let’s be social</h1>
+                <p class="section-copy" data-i18n="socialDescription">Follow along for updates, ideas, and more.</p>
                 <a class="social-link" href="https://www.instagram.com/rexo_r9/" target="_blank" rel="noopener noreferrer">
                     <span class="instagram-mark" aria-hidden="true">◎</span>
-                    <span><span class="person-label">Instagram</span><strong>@rexo_r9</strong></span>
+                    <span><span class="person-label" data-i18n="instagram">Instagram</span><strong>@rexo_r9</strong></span>
                     <span class="external-arrow" aria-hidden="true">↗</span>
                 </a>
             </div>
         </section>
     </main>
 
-    <footer class="footer"><span>BLUEWAVE</span><span>Made to make you smile <b>✦</b></span></footer>
+    <footer class="footer"><span>BLUEWAVE</span><span><span data-i18n="footerText">Made to make you smile</span> <b>✦</b></span></footer>
     <script src="script.js"></script>
+    <script src="account.js"></script>
 </body>
 </html>
